@@ -119,8 +119,8 @@ function sendWhatsApp() {
   const spec   = inputs[3].value || '-';
   const msg    = inputs[4].value || '-';
 
-  const text = `مرحباً Sol-Montaire 👋\n\nالاسم: ${name}\nالعيادة: ${clinic}\nالبريد: ${email}\nالتخصص: ${spec}\n\nالرسالة:\n${msg}`;
-  window.open(`https://wa.me/201000000000?text=${encodeURIComponent(text)}`, '_blank');
+  const text = `مرحباً Sol-Monetaire 👋\n\nالاسم: ${name}\nالعيادة: ${clinic}\nالبريد: ${email}\nالتخصص: ${spec}\n\nالرسالة:\n${msg}`;
+  window.open(`https://wa.me/201551144733?text=${encodeURIComponent(text)}`, '_blank');
 }
 
 // ===== SCROLL ANIMATIONS =====
