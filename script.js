@@ -1,3 +1,26 @@
+// ===== ENSURE LIGHT THEME ON NAVIGATION =====
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function() {
+    if (!document.body.classList.contains('light-mode')) {
+      document.body.classList.add('light-mode');
+      const darkIcon = document.querySelector('.theme-icon-dark');
+      const lightIcon = document.querySelector('.theme-icon-light');
+      const darkLogo = document.querySelector('.nav-logo-dark');
+      const lightLogo = document.querySelector('.nav-logo-light');
+      
+      if (darkIcon && lightIcon) {
+        darkIcon.style.display = 'none';
+        lightIcon.style.display = 'block';
+      }
+      if (darkLogo && lightLogo) {
+        darkLogo.style.display = 'none';
+        lightLogo.style.display = 'block';
+      }
+      localStorage.setItem('solmonetaire-theme', 'light');
+    }
+  });
+});
+
 // ===== THEME TOGGLE =====
 function toggleTheme(themeName) {
   const isLight = document.body.classList.toggle('light-mode');
@@ -23,7 +46,10 @@ function toggleTheme(themeName) {
 
 function initTheme() {
   const saved = localStorage.getItem('solmonetaire-theme');
-  if (saved === 'light') {
+  // Default to light mode if no preference saved
+  const theme = saved || 'light';
+  
+  if (theme === 'light') {
     document.body.classList.add('light-mode');
     const darkIcon = document.querySelector('.theme-icon-dark');
     const lightIcon = document.querySelector('.theme-icon-light');
@@ -35,6 +61,18 @@ function initTheme() {
       darkLogo.style.display = 'none';
       lightLogo.style.display = 'block';
     }
+  } else {
+    document.body.classList.remove('light-mode');
+    const darkIcon = document.querySelector('.theme-icon-dark');
+    const lightIcon = document.querySelector('.theme-icon-light');
+    const darkLogo = document.querySelector('.nav-logo-dark');
+    const lightLogo = document.querySelector('.nav-logo-light');
+    if (darkIcon && lightIcon && darkLogo && lightLogo) {
+      darkIcon.style.display = 'block';
+      lightIcon.style.display = 'none';
+      darkLogo.style.display = 'block';
+      lightLogo.style.display = 'none';
+    }
   }
 }
 
@@ -42,7 +80,11 @@ document.addEventListener('DOMContentLoaded', initTheme);
 
 // ===== LANGUAGE TOGGLE =====
 function setLang(lang) {
+  const isLightMode = document.body.classList.contains('light-mode');
   document.body.className = lang;
+  if (isLightMode) {
+    document.body.classList.add('light-mode');
+  }
   document.documentElement.lang = lang;
 
   // تفعيل زرار اللغة
