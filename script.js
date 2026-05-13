@@ -119,7 +119,7 @@ function sendWhatsApp() {
   const spec   = inputs[3].value || '-';
   const msg    = inputs[4].value || '-';
 
-  const text = `مرحباً Sol-Monetaire 👋\n\nالاسم: ${name}\nالعيادة: ${clinic}\nالبريد: ${email}\nالتخصص: ${spec}\n\nالرسالة:\n${msg}`;
+  const text = `Hello SolMonétaire 👋\n\nName: ${name}\nPractice: ${clinic}\nEmail: ${email}\nSpecialty: ${spec}\n\nMessage:\n${msg}`;
   window.open(`https://wa.me/201551144733?text=${encodeURIComponent(text)}`, '_blank');
 }
 
